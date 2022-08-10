@@ -1,10 +1,15 @@
-<h1>{{ titulo }}</h1>
-<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
-<nav>
-  <ul>
-    <li><a routerLink="/audio-player-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
-    <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
-  </ul>
-</nav>
+<div class="container">
+  <div class="title content-center">
+    <h1>{{ titulo }}</h1>
+  </div>
+  
+  <div class="container text-center content-center">
+    <div class="row">
+      <div class="col" *ngFor="let audio of audios">
+        <audio-player audioId={{audio.id}}></audio-player>
+        <p>{{audio.title}}</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<audio-player *ngFor="let id of audioIds" audioId={{id}}></audio-player>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import data from '../assets/ids-audios.json';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,7 @@ export class AppComponent {
 constructor ( ) {}  
 
 titulo = "Audios del Mani";
-audioIds = [
-  "1GOGMrpCO6ESCXmKLeazydt-aVPqVtcvW",
-  "1rQ5M7jDTcbOs4Dub3HjGiAiO2NQswy37"
-];
+
+audios = data;
 
 }

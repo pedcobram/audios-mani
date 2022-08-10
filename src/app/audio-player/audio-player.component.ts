@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { AudioPlayerService } from './audio-player.service';
 
 @Component({
@@ -19,6 +18,7 @@ export class AudioPlayerComponent implements OnInit {
   ngOnInit(): void {
     this.audioPlayerService.getPlayerStatus().subscribe((estado: any) => {
         this.estadoActual = estado;
+        console.log(this.estadoActual);
         if (estado == "playing") {
             this.textoBoton = "Volver a reproducir";
         } else {
@@ -28,7 +28,6 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   playAudio() {
-    console.log(this.estadoActual);
     this.audioPlayerService.setAudio("https://drive.google.com/uc?export=download&id=" + this.audioId);
     this.audioPlayerService.playAudio();
   }
