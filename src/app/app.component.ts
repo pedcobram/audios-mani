@@ -1,5 +1,4 @@
-import { Component, Inject  } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,21 +7,12 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AppComponent {
 
-  constructor (  
-    @Inject(DOCUMENT) private document: Document  
-) {}  
+constructor ( ) {}  
 
 titulo = "Audios del Mani";
-
-  playMusic() {
-    var music = new Audio('https://drive.google.com/uc?export=download&id=1GOGMrpCO6ESCXmKLeazydt-aVPqVtcvW');
-    music.play();
-  }
-
-  playAudio() { 
-    let player = <HTMLAudioElement>document.getElementById("player");
-    player.play();
-  }
-
+audioIds = [
+  "1GOGMrpCO6ESCXmKLeazydt-aVPqVtcvW",
+  "1rQ5M7jDTcbOs4Dub3HjGiAiO2NQswy37"
+];
 
 }

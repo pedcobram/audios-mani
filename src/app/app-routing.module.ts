@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { FirstComponent } from './first/first.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 import { SecondComponent } from './second/second.component';
 
 const routes: Routes = [
-  { path: 'first-component', component: FirstComponent },
+  { path: '', redirectTo: 'audios', pathMatch: 'full'},
+  { path: 'audios', component: AudioPlayerComponent },
   { path: 'second-component', component: SecondComponent },
+  { path: '**', redirectTo: 'audios', pathMatch: 'full'}
 ];
 
 @NgModule({

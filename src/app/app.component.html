@@ -2,16 +2,9 @@
 <!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
 <nav>
   <ul>
-    <li><a routerLink="/first-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
+    <li><a routerLink="/audio-player-component" routerLinkActive="active" ariaCurrentWhenActive="page">First Component</a></li>
     <li><a routerLink="/second-component" routerLinkActive="active" ariaCurrentWhenActive="page">Second Component</a></li>
   </ul>
 </nav>
 
-<audio id="player">
-  <source src="https://drive.google.com/uc?export=download&id=1GOGMrpCO6ESCXmKLeazydt-aVPqVtcvW" type="audio/ogg"/>
-</audio>
-
-<button (click)="playAudio()" type="button">Play Audio</button>
-
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<audio-player *ngFor="let id of audioIds" audioId={{id}}></audio-player>
