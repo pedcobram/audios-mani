@@ -41,7 +41,6 @@ estadoDelAudio($event: any) {
 
 cambiarModoReproduccion() {
   this.allowMultiple = !this.allowMultiple;
-  console.log(this.allowMultiple);
 }
 
 }
