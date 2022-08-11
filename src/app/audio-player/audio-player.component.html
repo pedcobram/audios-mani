@@ -1,3 +1,4 @@
-<button class="bn632-hover bn27" (click)="playAudio()" type="button">
+<button class="bn632-hover bn27" (click)="estadoActual === 'playing' ? pauseAudio() : playAudio()" type="button">
     <p>{{ textoBoton }}</p>
 </button>
+<p class="content-center"> {{ titulo }}</p>

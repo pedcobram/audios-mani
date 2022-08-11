@@ -38,3 +38,15 @@
     );
     box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
 }
+
+.subtext {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.content-center {
+    margin: auto;
+    text-align: center;
+}

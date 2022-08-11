@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { AudioPlayerService } from './audio-player.service';
 
 @Component({
@@ -9,27 +10,45 @@ import { AudioPlayerService } from './audio-player.service';
 })
 export class AudioPlayerComponent implements OnInit {
 
-  @Input() public audioId: any = "";
-  private estadoActual: String = "";
+  @Input() public audioId: any;
+  @Input() public titulo: any;
+  @Output() public estadoDelAudio = new EventEmitter<Array<string>>();
+ 
+  public estadoActual: string;
   public textoBoton: any = "Reproducir audio";
+
+  private subscription: Subscription = new Subscription;
 
   constructor(private audioPlayerService: AudioPlayerService) { }
 
   ngOnInit(): void {
-    this.audioPlayerService.getPlayerStatus().subscribe((estado: any) => {
+    this.subscription = this.audioPlayerService.getPlayerStatus().subscribe((estado: any) => {
         this.estadoActual = estado;
-        console.log(this.estadoActual);
-        if (estado == "playing") {
-            this.textoBoton = "Volver a reproducir";
+        this.estadoDelAudio.emit([this.audioId, this.estadoActual]);
+        if (estado == "loading") {
+          this.textoBoton = "Cargando...";
+        } else if (estado == "playing") {
+            this.textoBoton = "Parar audio";
         } else {
             this.textoBoton = "Reproducir audio";
         }
-    });  
+    });
   }
 
   playAudio() {
+    if (this.estadoActual == 'loading' || this.estadoActual == 'playing') {
+      return
+    }
     this.audioPlayerService.setAudio("https://drive.google.com/uc?export=download&id=" + this.audioId);
     this.audioPlayerService.playAudio();
   }
+
+  pauseAudio() {
+    this.audioPlayerService.pauseAudio();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+}
 
 }

@@ -1,15 +1,24 @@
-<div class="container">
-  <div class="title content-center">
-    <h1>{{ titulo }}</h1>
-  </div>
-  
-  <div class="container text-center content-center">
-    <div class="row">
-      <div class="col" *ngFor="let audio of audios">
-        <audio-player audioId={{audio.id}}></audio-player>
-        <p>{{audio.title}}</p>
-      </div>
-    </div>
-  </div>
+<div class="title content-center">
+  <h1>{{ titulo }}</h1>
 </div>
 
+
+<div class="flex-container">
+  <div class="flex-child">
+    <p>Reproducir audios simultaneamente: </p>
+  </div>
+
+  <div class="flex-child">
+    <label class="switch">
+      <input title="box" type="checkbox" (click)="cambiarModoReproduccion()">
+      <span class="slider round"></span>
+    </label> 
+  </div>  
+</div>
+
+
+<div class="container text-center content-center">
+  <div class="row row-cols-2">
+      <audio-player id={{audio.id}} class="col" (estadoDelAudio)="estadoDelAudio($event)" *ngFor="let audio of audios" audioId={{audio.id}} titulo="{{audio.title}}"></audio-player>
+  </div>
+</div>
