@@ -13,6 +13,7 @@ export class AudioPlayerService {
 
     constructor() {
         this.audio = new Audio();
+        // this.audio.volume = 0.1;
         this.attachListeners();
     }
 
