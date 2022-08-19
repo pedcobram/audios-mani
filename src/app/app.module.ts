@@ -6,14 +6,15 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AudioPlayerComponent } from './audio-player/audio-player.component';
-import { SecondComponent } from './second/second.component';
+import { AdSenseComponent } from './ad-sense/ad-sense.component';
 import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
     AppComponent,
     AudioPlayerComponent,
-    SecondComponent
+    AdSenseComponent,
+    AdSenseComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter} from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AudioPlayerService } from './audio-player.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { AudioPlayerService } from './audio-player.service';
   styleUrls: ['./audio-player.component.css'],
   providers: [AudioPlayerService]
 })
-export class AudioPlayerComponent implements OnInit {
+export class AudioPlayerComponent implements OnInit, OnDestroy {
 
   @Input() public audioId: any;
   @Input() public titulo: any;

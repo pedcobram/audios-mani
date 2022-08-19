@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import data from '../assets/ids-audios.json';
 import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
+import data from '../assets/ids-audios.json';
+import ads from '../assets/ids-ads.json';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ private idsEnCurso: string[] = [];
 
 // Importamos los datos desde un JSON
 public audios = data;
+public ads = ads;
 
 constructor(analytics: AngularFireAnalytics) {
   analytics.logEvent('custom_event', { });
