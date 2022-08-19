@@ -1,20 +1,6 @@
 import { Component, Input } from '@angular/core';
 import data from '../assets/ids-audios.json';
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyB3ZB3AQdCclhcvl4DXFScJv_9qQMpd9XY",
-  authDomain: "audios-mani.firebaseapp.com",
-  projectId: "audios-mani",
-  storageBucket: "audios-mani.appspot.com",
-  messagingSenderId: "284338908142",
-  appId: "1:284338908142:web:417b981c87a27af7e7fcff",
-  measurementId: "G-P9HL5T7CTB"
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 
 @Component({
   selector: 'app-root',
@@ -30,9 +16,9 @@ private idsEnCurso: string[] = [];
 // Importamos los datos desde un JSON
 public audios = data;
 
-constructor () { 
-  analytics;
-}  
+constructor(analytics: AngularFireAnalytics) {
+  analytics.logEvent('custom_event', { });
+} 
 
 estadoDelAudio($event: any) {
   if (!this.allowMultiple && (this.idsEnCurso.length > 1 && $event[1] === 'playing')) {

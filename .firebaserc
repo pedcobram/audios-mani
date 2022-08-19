@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "audios-mani"
+  },
+  "targets": {
+    "audios-mani": {
+      "hosting": {
+        "audios-mani": [
+          "audios-mani"
+        ]
+      }
+    }
   }
 }
